@@ -43,10 +43,10 @@ def crear_ventana():
     ventana = tk.Tk()
     ventana.title("Jugadores")
     ventana.attributes('-fullscreen', True)
-    ventana.configure(bg="#630551")
+    ventana.configure(bg="turquoise")
  
 
-    formulario_frame = tk.Frame(ventana, bd=2, relief=tk.SOLID, bg="#F3C7AA")
+    formulario_frame = tk.Frame(ventana, bd=2, relief=tk.SOLID, bg="turquoise")
     formulario_frame.grid(padx=10, pady=10)
 
 
@@ -88,26 +88,24 @@ def crear_ventana():
 crear_ventana()
 
 
-
 root = tk.Tk()
 root.title("Juego de Preguntas y Respuestas")
 root.attributes("-fullscreen", True)
-root.configure(bg="#630551")
+root.configure(bg="turquoise")
 
 label_pregunta = tk.Label(root, text="", font=("Helvetica", 20, 'bold'), bg="#630551", fg="white")
 label_pregunta.pack(pady=90)
 
-frame_respuestas = tk.Frame(root, bg="#630551")
+frame_respuestas = tk.Frame(root, bg="turquoise")
 frame_respuestas.pack()
 botones_respuesta = []
-
 
 
 def abrir_juego():
         global root
         
         def obtener_preguntas():
-            cursor.execute("SELECT PREGUNTA, RESPUESTA_CORRECTA, RESPUESTA_1, RESPUESTA_2, RESPUESTA_3 FROM Preguntas")
+            cursor.execute("SELECT * FROM Preguntas")
             preguntas_respuestas = cursor.fetchall()
             random.shuffle(preguntas_respuestas) 
             return preguntas_respuestas
@@ -144,11 +142,11 @@ def abrir_juego():
             if pregunta_actual < len(preguntas_respuestas):
                 messagebox.showinfo("Resultado", mensaje) 
             else:
-                messagebox.showinfo("Fin del juego", "¡Juego terminado! Tu puntuación: " + str(puntuacion))   
+                messagebox.showinfo("Fin del juego", " Tu puntuación: " + str(puntuacion))   
 
 
         for i in range(4):
-            frame_grupo = tk.Frame(frame_respuestas, bg="#630551")
+            frame_grupo = tk.Frame(frame_respuestas, bg="turquoise")
             frame_grupo.pack(pady=30)
             boton = tk.Button(frame_grupo, text="", font=("Helvetica", 17), command=lambda i=i: verificar_respuesta(botones_respuesta[i]['text']))
             boton.pack(pady=10)
